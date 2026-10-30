@@ -13,7 +13,8 @@ html,body{overscroll-behavior:none}
 }
 /* iPhone installata: l'altezza al 100% esclude la barra di stato, quindi la scena si aggancia ai bordi reali dello schermo */
 @media (max-width:480px), (pointer:coarse){
-  html,body{height:100vh;height:100lvh}
-  .stage{position:fixed;top:0;right:0;bottom:0;left:0;height:auto}
+  html,body{height:var(--app-h,100%);overflow:hidden}
+  .stage{position:absolute;top:0;left:0;right:0;height:var(--app-h,100%)}
+  #screen[data-scene="1"] .status::before{background:linear-gradient(var(--s-bg),transparent)}
   .status::before{inset:0;-webkit-backdrop-filter:none;backdrop-filter:none;background:linear-gradient(var(--bg) 60%,transparent);-webkit-mask-image:none;mask-image:none}
 }

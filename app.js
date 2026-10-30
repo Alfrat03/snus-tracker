@@ -1970,8 +1970,12 @@ function fit(){
   var h=window.innerHeight,w=window.innerWidth;
   var f=w<=480?1:Math.min(1,(h-32)/864);
   document.documentElement.style.setProperty("--fit",String(f));
+  /* app installata su iPhone: la finestra risulta più bassa dello schermo (esclude barra di stato e indicatore Home), quindi si usa l'altezza reale dello schermo */
+  var full=h;
+  if(isIOS()&&isStandalone()&&w<=480){var sh=window.screen&&screen.width<screen.height?screen.height:h;if(sh>h)full=sh}
+  document.documentElement.style.setProperty("--app-h",full+"px");
 }
-window.addEventListener("resize",fit);
+window.addEventListener("resize",fit);window.addEventListener("orientationchange",function(){setTimeout(fit,300)});
 
 /* ritorno in primo piano: ricalcola il timer, la calibrazione e riallinea il server delle notifiche */
 var lastDay=dayStart(now());
