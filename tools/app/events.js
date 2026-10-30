@@ -167,7 +167,9 @@ function fit(){
   if(isIOS()&&isStandalone()&&w<=480){var sh=window.screen&&screen.width<screen.height?screen.height:h;if(sh>h)full=sh}
   document.documentElement.style.setProperty("--app-h",full+"px");
 }
-window.addEventListener("resize",fit);window.addEventListener("orientationchange",function(){setTimeout(fit,300)});
+window.addEventListener("resize",fit);
+/* niente zoom con le due dita né con il doppio tocco */
+["gesturestart","gesturechange"].forEach(function(t){document.addEventListener(t,function(e){e.preventDefault()},{passive:false})});
 
 /* ritorno in primo piano: ricalcola il timer, la calibrazione e riallinea il server delle notifiche */
 var lastDay=dayStart(now());

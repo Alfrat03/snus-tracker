@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Snus Tracker</title>
 <meta name="description" content="Tieni il conto di bustine, nicotina e spesa.">
 <meta name="theme-color" content="#f2f2f7">
@@ -415,6 +415,10 @@ html,body{overscroll-behavior:none}
   #screen[data-scene="1"] .status::before{background:linear-gradient(var(--s-bg),transparent)}
   .status::before{inset:0;-webkit-backdrop-filter:none;backdrop-filter:none;background:linear-gradient(var(--bg) 60%,transparent);-webkit-mask-image:none;mask-image:none}
 }
+/* niente zoom con il doppio tocco: si comporta come un'app */
+html,body,*{touch-action:manipulation}
+.swipe__row{touch-action:pan-y}
+.ds-sheet__grab,.ds-sheet__title,.addpage__head{touch-action:none}
 
 </style>
 </head>
@@ -445,7 +449,7 @@ html,body{overscroll-behavior:none}
   </div>
 </div>
 
-<script src="config.js?v=1.0.2"></script>
-<script src="app.js?v=1.0.2"></script>
+<script src="config.js?v=1.0.3"></script>
+<script src="app.js?v=1.0.3"></script>
 </body>
 </html>

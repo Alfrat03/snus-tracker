@@ -18,3 +18,7 @@ html,body{overscroll-behavior:none}
   #screen[data-scene="1"] .status::before{background:linear-gradient(var(--s-bg),transparent)}
   .status::before{inset:0;-webkit-backdrop-filter:none;backdrop-filter:none;background:linear-gradient(var(--bg) 60%,transparent);-webkit-mask-image:none;mask-image:none}
 }
+/* niente zoom con il doppio tocco: si comporta come un'app */
+html,body,*{touch-action:manipulation}
+.swipe__row{touch-action:pan-y}
+.ds-sheet__grab,.ds-sheet__title,.addpage__head{touch-action:none}
