@@ -11,3 +11,9 @@ html,body{overscroll-behavior:none}
   .ds-sheet{margin-bottom:max(8px,env(safe-area-inset-bottom,0px))}
   .banner-slot{top:calc(env(safe-area-inset-top,0px) + 6px)}
 }
+/* iPhone installata: l'altezza al 100% esclude la barra di stato, quindi la scena si aggancia ai bordi reali dello schermo */
+@media (max-width:480px), (pointer:coarse){
+  html,body{height:100vh;height:100lvh}
+  .stage{position:fixed;top:0;right:0;bottom:0;left:0;height:auto}
+  .status::before{inset:0;-webkit-backdrop-filter:none;backdrop-filter:none;background:linear-gradient(var(--bg) 60%,transparent);-webkit-mask-image:none;mask-image:none}
+}
