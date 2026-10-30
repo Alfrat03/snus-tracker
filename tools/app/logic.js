@@ -202,8 +202,7 @@ function setTheme(v){
   S.theme=v;
   var r=document.documentElement;
   if(v==="auto")r.removeAttribute("data-theme");else r.setAttribute("data-theme",v);
-  var dark=v==="dark"||(v==="auto"&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches);
-  var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",dark?"#000000":"#f2f2f7");
+  var sc=document.getElementById("screen");if(sc)barColor(sc,sc.dataset.scene==="1");
 }
 function wipe(){
   var keep={theme:S.theme,notif:S.notif,sub:S.sub,subKey:S.subKey,askedPerm:S.askedPerm};

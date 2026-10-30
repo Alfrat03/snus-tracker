@@ -434,6 +434,7 @@ function render(){
   if(scp)applyScene(scp);
   screen.dataset.scene=scp?"1":"0";
   screen.dataset.tab=S.tab;screen.dataset.phase=S.phase;
+  barColor(screen,!!scp);
   view.innerHTML=S.tab==="oggi"?viewOggi():S.tab==="scorte"?viewScorte():S.tab==="dati"?viewDati():viewAltro();
   view.scrollTop=sameTab?keep:0;
   var due=backupDue();
@@ -443,4 +444,11 @@ function render(){
   ov.hidden=!html;ov.innerHTML=html;
   if(html&&prev!==S.sheet+(S.form?"f":"")){var h=document.getElementById("sh-title")||document.getElementById("ap-title");if(h)h.focus()}
   ov.dataset.k=html?S.sheet+(S.form?"f":""):"";
+}
+
+/* barra di stato: quando iOS la disegna piena, prende il colore dello sfondo in cima allo schermo, così non resta una banda nera */
+function barColor(screen,scene){
+  var m=document.querySelector('meta[name="theme-color"]');if(!m)return;
+  var cs=getComputedStyle(screen),c=(scene?cs.getPropertyValue("--s-bg"):"").trim()||getComputedStyle(document.documentElement).getPropertyValue("--bg").trim();
+  if(c&&m.getAttribute("content")!==c)m.setAttribute("content",c);
 }
