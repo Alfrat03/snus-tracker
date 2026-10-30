@@ -1,0 +1,11 @@
+name = "snus-push"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+[[durable_objects.bindings]]
+name = "PUSH"
+class_name = "PushQueue"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["PushQueue"]

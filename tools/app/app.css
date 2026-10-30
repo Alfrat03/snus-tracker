@@ -1,0 +1,13 @@
+
+/* ---------- app installata ---------- */
+.panel{display:none!important}
+html,body{overscroll-behavior:none}
+@media (max-width:480px), (pointer:coarse){
+  :root{--status:env(safe-area-inset-top,0px);--tab-bottom:max(12px,calc(env(safe-area-inset-bottom,0px) - 6px));--tabspace:calc(84px + var(--tab-bottom))}
+  body{background:var(--bg)}
+  .status{display:flex;height:var(--status);padding:0}
+  .status > *{display:none}
+  .addpage{top:calc(env(safe-area-inset-top,0px) + 10px);padding-bottom:calc(var(--space-6) + env(safe-area-inset-bottom,0px))}
+  .ds-sheet{margin-bottom:max(8px,env(safe-area-inset-bottom,0px))}
+  .banner-slot{top:calc(env(safe-area-inset-top,0px) + 6px)}
+}
